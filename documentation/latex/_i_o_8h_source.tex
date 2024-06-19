@@ -1,0 +1,32 @@
+\doxysection{IO.\+h}
+\hypertarget{_i_o_8h_source}{}\label{_i_o_8h_source}\index{src/IO/IO.h@{src/IO/IO.h}}
+\mbox{\hyperlink{_i_o_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ IO\_H}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ IO\_H}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <zephyr/kernel.h>}\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <zephyr/device.h>}\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <zephyr/devicetree.h>}\ \ \ \ \ \ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <zephyr/drivers/gpio.h>}\ \ \ \ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <zephyr/sys/printk.h>}\ \ \ \ \ \ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <zephyr/timing/timing.h>}\ \ \ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <stdio.h>}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <string.h>}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ SLEEP\_TIME\_MS\ \ \ 60*1000}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ LED1\_PIN\ 13}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ LED2\_PIN\ 14}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ LED3\_PIN\ 15}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ LED4\_PIN\ 16}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ GPIO0\_NODE\ DT\_NODELABEL(gpio0)\ \ }}
+\DoxyCodeLine{00036\ \textcolor{keyword}{extern}\ uint8\_t\ \mbox{\hyperlink{_i_o_8h_a0b748246fd4b68d1f3a85e79bcadfc37}{button\_state}}[4];\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_o_8h_ab4b2c1747e66383dfb0b5679887e1854}{button\_pressed}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ device\ *dev,\ \textcolor{keyword}{struct}\ gpio\_callback\ *cb,\ uint32\_t\ pins);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_i_o_8h_a89995812888279b6f90cac205b83ca61}{button\_config}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ IO\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

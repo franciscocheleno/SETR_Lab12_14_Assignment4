@@ -1,0 +1,206 @@
+\doxysection{src/uart/uart.h File Reference}
+\hypertarget{uart_8h}{}\label{uart_8h}\index{src/uart/uart.h@{src/uart/uart.h}}
+
+
+Header file for command processing and UART communication.  
+
+
+{\ttfamily \#include $<$zephyr/kernel.\+h$>$}\newline
+{\ttfamily \#include $<$zephyr/device.\+h$>$}\newline
+{\ttfamily \#include $<$zephyr/devicetree.\+h$>$}\newline
+{\ttfamily \#include $<$zephyr/drivers/uart.\+h$>$}\newline
+{\ttfamily \#include $<$zephyr/sys/printk.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{uart_8h_a2249bcfdf806a88baf01f92fc24f8e9d}{uart\+\_\+H}}
+\item 
+\#define \mbox{\hyperlink{uart_8h_a07b40c5bd9acc44f62a9182527dbcc9b}{UART\+\_\+\+NODE}}~DT\+\_\+\+NODELABEL(uart0)   /\texorpdfstring{$\ast$}{*} UART0 node ID\texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{uart_8h_aabfdd434c3f5fc98789fd65dc741f3f5}{MAIN\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+MS}}~1000         /\texorpdfstring{$\ast$}{*} Time between \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}}() activations \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{uart_8h_aa46777f75164fc107271e38f1f773e4d}{FATAL\+\_\+\+ERR}}~-\/1                    /\texorpdfstring{$\ast$}{*} Fatal error return code, app terminates \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a630686ccbe0cb17e592951055a5da582}{RXBUF\+\_\+\+SIZE}}~60                   /\texorpdfstring{$\ast$}{*} RX buffer size \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a923af2d146f214e75816a7f5993cee29}{TXBUF\+\_\+\+SIZE}}~60                   /\texorpdfstring{$\ast$}{*} TX buffer size \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{uart_8h_a8b8af8bedcac87c0d3c68634448b94a7}{MSG\+\_\+\+BUF\+\_\+\+SIZE}}~100                /\texorpdfstring{$\ast$}{*} Buffer for messages sent via UART \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{uart_8h_ab6426fc74901f4fbec94862ebb672b81}{RX\+\_\+\+TIMEOUT}}~1000                 /\texorpdfstring{$\ast$}{*} Inactivity period after the instant when last char was received that triggers an rx event (in us) \texorpdfstring{$\ast$}{*}/
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{uart_8h_ad20d59c8a899f1314f93710419d0705b}{print\+\_\+\+UI}} ()
+\begin{DoxyCompactList}\small\item\em Prints the UI. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{uart_8h_a5bfee77f43d287a477e32e10b3168430}{uart\+\_\+init}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the UART. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{uart_8h_a322bf2588d266226a6c485677f737ef3}{uart\+\_\+cb}} (const struct device \texorpdfstring{$\ast$}{*}dev, struct uart\+\_\+event \texorpdfstring{$\ast$}{*}evt, void \texorpdfstring{$\ast$}{*}user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em UART callback implementation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{uart_8h_a30cd03039fc5d6965180efefcec9cb15}{read\+\_\+user\+\_\+inp}} (uint8\+\_\+t RX\+\_\+chars\+\_\+aux\mbox{[}\mbox{\hyperlink{uart_8h_a630686ccbe0cb17e592951055a5da582}{RXBUF\+\_\+\+SIZE}}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Reads user input from UART. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{uart_8h_a7781516e906a759a091c3c59d219d980}{RX\+\_\+buf}} \mbox{[}\mbox{\hyperlink{uart_8h_a630686ccbe0cb17e592951055a5da582}{RXBUF\+\_\+\+SIZE}}\mbox{]}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{uart_8h_af306aae5267e49e874ae817ea6b81c31}{RX\+\_\+chars}} \mbox{[}\mbox{\hyperlink{uart_8h_a630686ccbe0cb17e592951055a5da582}{RXBUF\+\_\+\+SIZE}}\mbox{]}
+\item 
+volatile int \mbox{\hyperlink{uart_8h_aec36efedb516ed959b990235b3ccc2a8}{uart\+\_\+\+RXbuf\+\_\+nchar}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for command processing and UART communication. 
+
+\begin{DoxyAuthor}{Author}
+Francisco Heleno \href{mailto:francisco.c.heleno@ua.pt}{\texttt{ francisco.\+c.\+heleno@ua.\+pt}} and Hugo Carola \href{mailto:hugocarola@ua.pt}{\texttt{ hugocarola@ua.\+pt}} based on sample code given by Prof. Paulo Pedreiras
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1, June, 2024 
+\end{DoxyDate}
+This file contains the declarations for the UART communication, including initialization, configuration, and command processing functions. It also defines macros and external variables used in the UART implementation. 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{uart_8h_aa46777f75164fc107271e38f1f773e4d}\index{uart.h@{uart.h}!FATAL\_ERR@{FATAL\_ERR}}
+\index{FATAL\_ERR@{FATAL\_ERR}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{FATAL\_ERR}{FATAL\_ERR}}
+{\footnotesize\ttfamily \label{uart_8h_aa46777f75164fc107271e38f1f773e4d} 
+\#define FATAL\+\_\+\+ERR~-\/1                    /\texorpdfstring{$\ast$}{*} Fatal error return code, app terminates \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{uart_8h_aabfdd434c3f5fc98789fd65dc741f3f5}\index{uart.h@{uart.h}!MAIN\_SLEEP\_TIME\_MS@{MAIN\_SLEEP\_TIME\_MS}}
+\index{MAIN\_SLEEP\_TIME\_MS@{MAIN\_SLEEP\_TIME\_MS}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{MAIN\_SLEEP\_TIME\_MS}{MAIN\_SLEEP\_TIME\_MS}}
+{\footnotesize\ttfamily \label{uart_8h_aabfdd434c3f5fc98789fd65dc741f3f5} 
+\#define MAIN\+\_\+\+SLEEP\+\_\+\+TIME\+\_\+\+MS~1000         /\texorpdfstring{$\ast$}{*} Time between \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}}() activations \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{uart_8h_a8b8af8bedcac87c0d3c68634448b94a7}\index{uart.h@{uart.h}!MSG\_BUF\_SIZE@{MSG\_BUF\_SIZE}}
+\index{MSG\_BUF\_SIZE@{MSG\_BUF\_SIZE}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{MSG\_BUF\_SIZE}{MSG\_BUF\_SIZE}}
+{\footnotesize\ttfamily \label{uart_8h_a8b8af8bedcac87c0d3c68634448b94a7} 
+\#define MSG\+\_\+\+BUF\+\_\+\+SIZE~100                /\texorpdfstring{$\ast$}{*} Buffer for messages sent via UART \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{uart_8h_ab6426fc74901f4fbec94862ebb672b81}\index{uart.h@{uart.h}!RX\_TIMEOUT@{RX\_TIMEOUT}}
+\index{RX\_TIMEOUT@{RX\_TIMEOUT}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{RX\_TIMEOUT}{RX\_TIMEOUT}}
+{\footnotesize\ttfamily \label{uart_8h_ab6426fc74901f4fbec94862ebb672b81} 
+\#define RX\+\_\+\+TIMEOUT~1000                 /\texorpdfstring{$\ast$}{*} Inactivity period after the instant when last char was received that triggers an rx event (in us) \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{uart_8h_a630686ccbe0cb17e592951055a5da582}\index{uart.h@{uart.h}!RXBUF\_SIZE@{RXBUF\_SIZE}}
+\index{RXBUF\_SIZE@{RXBUF\_SIZE}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{RXBUF\_SIZE}{RXBUF\_SIZE}}
+{\footnotesize\ttfamily \label{uart_8h_a630686ccbe0cb17e592951055a5da582} 
+\#define RXBUF\+\_\+\+SIZE~60                   /\texorpdfstring{$\ast$}{*} RX buffer size \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{uart_8h_a923af2d146f214e75816a7f5993cee29}\index{uart.h@{uart.h}!TXBUF\_SIZE@{TXBUF\_SIZE}}
+\index{TXBUF\_SIZE@{TXBUF\_SIZE}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{TXBUF\_SIZE}{TXBUF\_SIZE}}
+{\footnotesize\ttfamily \label{uart_8h_a923af2d146f214e75816a7f5993cee29} 
+\#define TXBUF\+\_\+\+SIZE~60                   /\texorpdfstring{$\ast$}{*} TX buffer size \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{uart_8h_a2249bcfdf806a88baf01f92fc24f8e9d}\index{uart.h@{uart.h}!uart\_H@{uart\_H}}
+\index{uart\_H@{uart\_H}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_H}{uart\_H}}
+{\footnotesize\ttfamily \label{uart_8h_a2249bcfdf806a88baf01f92fc24f8e9d} 
+\#define uart\+\_\+H}
+
+\Hypertarget{uart_8h_a07b40c5bd9acc44f62a9182527dbcc9b}\index{uart.h@{uart.h}!UART\_NODE@{UART\_NODE}}
+\index{UART\_NODE@{UART\_NODE}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{UART\_NODE}{UART\_NODE}}
+{\footnotesize\ttfamily \label{uart_8h_a07b40c5bd9acc44f62a9182527dbcc9b} 
+\#define UART\+\_\+\+NODE~DT\+\_\+\+NODELABEL(uart0)   /\texorpdfstring{$\ast$}{*} UART0 node ID\texorpdfstring{$\ast$}{*}/}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{uart_8h_ad20d59c8a899f1314f93710419d0705b}\index{uart.h@{uart.h}!print\_UI@{print\_UI}}
+\index{print\_UI@{print\_UI}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{print\_UI()}{print\_UI()}}
+{\footnotesize\ttfamily \label{uart_8h_ad20d59c8a899f1314f93710419d0705b} 
+void print\+\_\+\+UI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Prints the UI. 
+
+This function prints the user interface, showing the frequencies of various threads, available commands, and the last received string. \Hypertarget{uart_8h_a30cd03039fc5d6965180efefcec9cb15}\index{uart.h@{uart.h}!read\_user\_inp@{read\_user\_inp}}
+\index{read\_user\_inp@{read\_user\_inp}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{read\_user\_inp()}{read\_user\_inp()}}
+{\footnotesize\ttfamily \label{uart_8h_a30cd03039fc5d6965180efefcec9cb15} 
+void read\+\_\+user\+\_\+inp (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{RX\+\_\+chars\+\_\+aux}{\mbox{[}\+RXBUF\+\_\+\+SIZE\mbox{]}}\end{DoxyParamCaption})}
+
+
+
+Reads user input from UART. 
+
+This function processes user input commands received via UART. It handles commands for setting frequencies, reading button states, setting output states, and reading ADC values.
+
+
+\begin{DoxyParams}{Parameters}
+{\em RX\+\_\+chars\+\_\+aux} & The received user input characters. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{uart_8h_a322bf2588d266226a6c485677f737ef3}\index{uart.h@{uart.h}!uart\_cb@{uart\_cb}}
+\index{uart\_cb@{uart\_cb}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_cb()}{uart\_cb()}}
+{\footnotesize\ttfamily \label{uart_8h_a322bf2588d266226a6c485677f737ef3} 
+void uart\+\_\+cb (\begin{DoxyParamCaption}\item[{const struct device \texorpdfstring{$\ast$}{*}}]{dev}{, }\item[{struct uart\+\_\+event \texorpdfstring{$\ast$}{*}}]{evt}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{user\+\_\+data}{}\end{DoxyParamCaption})}
+
+
+
+UART callback implementation. 
+
+This function handles UART events. Callback functions are executed in the scope of interrupt handlers and run asynchronously after hardware/software interrupts. They have a higher priority than tasks/threads and should be short and simple. Heavier processing should be deferred to a task with suitable priority.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dev} & The UART device. \\
+\hline
+{\em evt} & The UART event. \\
+\hline
+{\em user\+\_\+data} & User data. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{uart_8h_a5bfee77f43d287a477e32e10b3168430}\index{uart.h@{uart.h}!uart\_init@{uart\_init}}
+\index{uart\_init@{uart\_init}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_init()}{uart\_init()}}
+{\footnotesize\ttfamily \label{uart_8h_a5bfee77f43d287a477e32e10b3168430} 
+int uart\+\_\+init (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes the UART. 
+
+This function initializes and configures the UART device. It sets up the UART configuration, registers the UART callback, and enables data reception.
+
+\begin{DoxyReturn}{Returns}
+0 on success, FATAL\+\_\+\+ERR on failure. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{uart_8h_a7781516e906a759a091c3c59d219d980}\index{uart.h@{uart.h}!RX\_buf@{RX\_buf}}
+\index{RX\_buf@{RX\_buf}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{RX\_buf}{RX\_buf}}
+{\footnotesize\ttfamily \label{uart_8h_a7781516e906a759a091c3c59d219d980} 
+uint8\+\_\+t RX\+\_\+buf\mbox{[}\mbox{\hyperlink{uart_8h_a630686ccbe0cb17e592951055a5da582}{RXBUF\+\_\+\+SIZE}}\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+RX buffer, to store received data \Hypertarget{uart_8h_af306aae5267e49e874ae817ea6b81c31}\index{uart.h@{uart.h}!RX\_chars@{RX\_chars}}
+\index{RX\_chars@{RX\_chars}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{RX\_chars}{RX\_chars}}
+{\footnotesize\ttfamily \label{uart_8h_af306aae5267e49e874ae817ea6b81c31} 
+uint8\+\_\+t RX\+\_\+chars\mbox{[}\mbox{\hyperlink{uart_8h_a630686ccbe0cb17e592951055a5da582}{RXBUF\+\_\+\+SIZE}}\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+chars actually received ~\newline
+ \Hypertarget{uart_8h_aec36efedb516ed959b990235b3ccc2a8}\index{uart.h@{uart.h}!uart\_RXbuf\_nchar@{uart\_RXbuf\_nchar}}
+\index{uart\_RXbuf\_nchar@{uart\_RXbuf\_nchar}!uart.h@{uart.h}}
+\doxysubsubsection{\texorpdfstring{uart\_RXbuf\_nchar}{uart\_RXbuf\_nchar}}
+{\footnotesize\ttfamily \label{uart_8h_aec36efedb516ed959b990235b3ccc2a8} 
+volatile int uart\+\_\+\+RXbuf\+\_\+nchar\hspace{0.3cm}{\ttfamily [extern]}}
+
+Number of chars currrntly on the rx buffer 

@@ -1,0 +1,138 @@
+\doxysection{src/\+IO/\+IO.h File Reference}
+\hypertarget{_i_o_8h}{}\label{_i_o_8h}\index{src/IO/IO.h@{src/IO/IO.h}}
+
+
+Implementation of the command processing and UART communication.  
+
+
+{\ttfamily \#include $<$zephyr/kernel.\+h$>$}\newline
+{\ttfamily \#include $<$zephyr/device.\+h$>$}\newline
+{\ttfamily \#include $<$zephyr/devicetree.\+h$>$}\newline
+{\ttfamily \#include $<$zephyr/drivers/gpio.\+h$>$}\newline
+{\ttfamily \#include $<$zephyr/sys/printk.\+h$>$}\newline
+{\ttfamily \#include $<$zephyr/timing/timing.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_i_o_8h_a840217aee9bd887463dad1b56defb051}{SLEEP\+\_\+\+TIME\+\_\+\+MS}}~60\texorpdfstring{$\ast$}{*}1000
+\item 
+\#define \mbox{\hyperlink{_i_o_8h_a318aa17e5d40e2132d2c7f6269ce7f51}{LED1\+\_\+\+PIN}}~13
+\begin{DoxyCompactList}\small\item\em Pin definitions for LEDs and buttons. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_i_o_8h_af6f84078113b55354d20585131b386f7}{LED2\+\_\+\+PIN}}~14
+\item 
+\#define \mbox{\hyperlink{_i_o_8h_a4cb3ff938bcabb01494ce529ae55a542}{LED3\+\_\+\+PIN}}~15
+\item 
+\#define \mbox{\hyperlink{_i_o_8h_aae684bb3d2f940637ccbc2adeb0e134d}{LED4\+\_\+\+PIN}}~16
+\item 
+\#define \mbox{\hyperlink{_i_o_8h_abf6f155bdb9da42f7e68cc1e78262806}{GPIO0\+\_\+\+NODE}}~DT\+\_\+\+NODELABEL(gpio0)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_i_o_8h_ab4b2c1747e66383dfb0b5679887e1854}{button\+\_\+pressed}} (const struct device \texorpdfstring{$\ast$}{*}dev, struct gpio\+\_\+callback \texorpdfstring{$\ast$}{*}cb, uint32\+\_\+t pins)
+\begin{DoxyCompactList}\small\item\em Callback function for button presses. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_i_o_8h_a89995812888279b6f90cac205b83ca61}{button\+\_\+config}} ()
+\begin{DoxyCompactList}\small\item\em Configure buttons for interrupt-\/driven input. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{_i_o_8h_a0b748246fd4b68d1f3a85e79bcadfc37}{button\+\_\+state}} \mbox{[}4\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of the command processing and UART communication. 
+
+\begin{DoxyAuthor}{Author}
+Francisco Heleno \href{mailto:francisco.c.heleno@ua.pt}{\texttt{ francisco.\+c.\+heleno@ua.\+pt}} and Hugo Carola \href{mailto:hugocarola@ua.pt}{\texttt{ hugocarola@ua.\+pt}} based on sample code given by Prof. Paulo Pedreiras
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1, June, 2024 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_i_o_8h_abf6f155bdb9da42f7e68cc1e78262806}\index{IO.h@{IO.h}!GPIO0\_NODE@{GPIO0\_NODE}}
+\index{GPIO0\_NODE@{GPIO0\_NODE}!IO.h@{IO.h}}
+\doxysubsubsection{\texorpdfstring{GPIO0\_NODE}{GPIO0\_NODE}}
+{\footnotesize\ttfamily \label{_i_o_8h_abf6f155bdb9da42f7e68cc1e78262806} 
+\#define GPIO0\+\_\+\+NODE~DT\+\_\+\+NODELABEL(gpio0)}
+
+Device tree node for GPIO \Hypertarget{_i_o_8h_a318aa17e5d40e2132d2c7f6269ce7f51}\index{IO.h@{IO.h}!LED1\_PIN@{LED1\_PIN}}
+\index{LED1\_PIN@{LED1\_PIN}!IO.h@{IO.h}}
+\doxysubsubsection{\texorpdfstring{LED1\_PIN}{LED1\_PIN}}
+{\footnotesize\ttfamily \label{_i_o_8h_a318aa17e5d40e2132d2c7f6269ce7f51} 
+\#define LED1\+\_\+\+PIN~13}
+
+
+
+Pin definitions for LEDs and buttons. 
+
+LEDs 1-\/4 and buttons 1-\/4 are the ones on board. \Hypertarget{_i_o_8h_af6f84078113b55354d20585131b386f7}\index{IO.h@{IO.h}!LED2\_PIN@{LED2\_PIN}}
+\index{LED2\_PIN@{LED2\_PIN}!IO.h@{IO.h}}
+\doxysubsubsection{\texorpdfstring{LED2\_PIN}{LED2\_PIN}}
+{\footnotesize\ttfamily \label{_i_o_8h_af6f84078113b55354d20585131b386f7} 
+\#define LED2\+\_\+\+PIN~14}
+
+\Hypertarget{_i_o_8h_a4cb3ff938bcabb01494ce529ae55a542}\index{IO.h@{IO.h}!LED3\_PIN@{LED3\_PIN}}
+\index{LED3\_PIN@{LED3\_PIN}!IO.h@{IO.h}}
+\doxysubsubsection{\texorpdfstring{LED3\_PIN}{LED3\_PIN}}
+{\footnotesize\ttfamily \label{_i_o_8h_a4cb3ff938bcabb01494ce529ae55a542} 
+\#define LED3\+\_\+\+PIN~15}
+
+\Hypertarget{_i_o_8h_aae684bb3d2f940637ccbc2adeb0e134d}\index{IO.h@{IO.h}!LED4\_PIN@{LED4\_PIN}}
+\index{LED4\_PIN@{LED4\_PIN}!IO.h@{IO.h}}
+\doxysubsubsection{\texorpdfstring{LED4\_PIN}{LED4\_PIN}}
+{\footnotesize\ttfamily \label{_i_o_8h_aae684bb3d2f940637ccbc2adeb0e134d} 
+\#define LED4\+\_\+\+PIN~16}
+
+\Hypertarget{_i_o_8h_a840217aee9bd887463dad1b56defb051}\index{IO.h@{IO.h}!SLEEP\_TIME\_MS@{SLEEP\_TIME\_MS}}
+\index{SLEEP\_TIME\_MS@{SLEEP\_TIME\_MS}!IO.h@{IO.h}}
+\doxysubsubsection{\texorpdfstring{SLEEP\_TIME\_MS}{SLEEP\_TIME\_MS}}
+{\footnotesize\ttfamily \label{_i_o_8h_a840217aee9bd887463dad1b56defb051} 
+\#define SLEEP\+\_\+\+TIME\+\_\+\+MS~60\texorpdfstring{$\ast$}{*}1000}
+
+\texorpdfstring{$<$}{<} Kernel functions \texorpdfstring{$<$}{<} Device management \texorpdfstring{$<$}{<} Device tree definitions \texorpdfstring{$<$}{<} GPIO access \texorpdfstring{$<$}{<} Kernel logging \texorpdfstring{$<$}{<} Timing services \texorpdfstring{$<$}{<} Standard I/O \texorpdfstring{$<$}{<} String manipulation 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_i_o_8h_a89995812888279b6f90cac205b83ca61}\index{IO.h@{IO.h}!button\_config@{button\_config}}
+\index{button\_config@{button\_config}!IO.h@{IO.h}}
+\doxysubsubsection{\texorpdfstring{button\_config()}{button\_config()}}
+{\footnotesize\ttfamily \label{_i_o_8h_a89995812888279b6f90cac205b83ca61} 
+void button\+\_\+config (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Configure buttons for interrupt-\/driven input. 
+
+\Hypertarget{_i_o_8h_ab4b2c1747e66383dfb0b5679887e1854}\index{IO.h@{IO.h}!button\_pressed@{button\_pressed}}
+\index{button\_pressed@{button\_pressed}!IO.h@{IO.h}}
+\doxysubsubsection{\texorpdfstring{button\_pressed()}{button\_pressed()}}
+{\footnotesize\ttfamily \label{_i_o_8h_ab4b2c1747e66383dfb0b5679887e1854} 
+void button\+\_\+pressed (\begin{DoxyParamCaption}\item[{const struct device \texorpdfstring{$\ast$}{*}}]{dev}{, }\item[{struct gpio\+\_\+callback \texorpdfstring{$\ast$}{*}}]{cb}{, }\item[{uint32\+\_\+t}]{pins}{}\end{DoxyParamCaption})}
+
+
+
+Callback function for button presses. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dev} & Pointer to the GPIO device structure. \\
+\hline
+{\em cb} & Pointer to the GPIO callback structure. \\
+\hline
+{\em pins} & Bitmask of pins for which the callback was triggered. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_i_o_8h_a0b748246fd4b68d1f3a85e79bcadfc37}\index{IO.h@{IO.h}!button\_state@{button\_state}}
+\index{button\_state@{button\_state}!IO.h@{IO.h}}
+\doxysubsubsection{\texorpdfstring{button\_state}{button\_state}}
+{\footnotesize\ttfamily \label{_i_o_8h_a0b748246fd4b68d1f3a85e79bcadfc37} 
+uint8\+\_\+t button\+\_\+state\mbox{[}4\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+Array to store button states 

@@ -1,0 +1,147 @@
+\doxysection{src/main.c File Reference}
+\hypertarget{main_8c}{}\label{main_8c}\index{src/main.c@{src/main.c}}
+
+
+Main application file.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$zephyr/kernel.\+h$>$}\newline
+{\ttfamily \#include $<$zephyr/drivers/gpio.\+h$>$}\newline
+{\ttfamily \#include "{}threads.\+h"{}}\newline
+{\ttfamily \#include "{}uart.\+h"{}}\newline
+{\ttfamily \#include "{}IO.\+h"{}}\newline
+{\ttfamily \#include "{}ADC.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8c_a661852bec8ab9683d43ad02881c2f2b5}{LED0\+\_\+\+NODE}}~DT\+\_\+\+ALIAS(led0)
+\item 
+\#define \mbox{\hyperlink{main_8c_ac8b7bbb65d5065e43a35775d9fc3e322}{LED1\+\_\+\+NODE}}~DT\+\_\+\+ALIAS(led1)
+\item 
+\#define \mbox{\hyperlink{main_8c_a9014b2cb02041c926b50b6411232ee82}{LED2\+\_\+\+NODE}}~DT\+\_\+\+ALIAS(led2)
+\item 
+\#define \mbox{\hyperlink{main_8c_ad5246f73682d98292ef7d7b038582700}{LED3\+\_\+\+NODE}}~DT\+\_\+\+ALIAS(led3)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_af7447a20748b0bb185d287bdd6c63b00}{outputs\+\_\+config}} ()
+\begin{DoxyCompactList}\small\item\em Configures the output for the LEDs. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\begin{DoxyCompactList}\small\item\em Initialize threads, pins, and UART. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_d_a_t_a_b_a_s_e}{DATABASE}} \mbox{\hyperlink{main_8c_ab75a9cab83ec0f1c6cb497b2fcba61d9}{DB}}
+\item 
+struct gpio\+\_\+dt\+\_\+spec \mbox{\hyperlink{main_8c_a50fe4b13bf2afc7318af54e654db9145}{led0\+\_\+dev}} = GPIO\+\_\+\+DT\+\_\+\+SPEC\+\_\+\+GET(\mbox{\hyperlink{main_8c_a661852bec8ab9683d43ad02881c2f2b5}{LED0\+\_\+\+NODE}}, gpios)
+\item 
+struct gpio\+\_\+dt\+\_\+spec \mbox{\hyperlink{main_8c_a1cb6257d3404a21567727de766108246}{led1\+\_\+dev}} = GPIO\+\_\+\+DT\+\_\+\+SPEC\+\_\+\+GET(\mbox{\hyperlink{main_8c_ac8b7bbb65d5065e43a35775d9fc3e322}{LED1\+\_\+\+NODE}}, gpios)
+\item 
+struct gpio\+\_\+dt\+\_\+spec \mbox{\hyperlink{main_8c_acd3ce5d68b360629114bfef1450b8a5d}{led2\+\_\+dev}} = GPIO\+\_\+\+DT\+\_\+\+SPEC\+\_\+\+GET(\mbox{\hyperlink{main_8c_a9014b2cb02041c926b50b6411232ee82}{LED2\+\_\+\+NODE}}, gpios)
+\item 
+struct gpio\+\_\+dt\+\_\+spec \mbox{\hyperlink{main_8c_a37cb9fa582678f5d3381405d90135296}{led3\+\_\+dev}} = GPIO\+\_\+\+DT\+\_\+\+SPEC\+\_\+\+GET(\mbox{\hyperlink{main_8c_ad5246f73682d98292ef7d7b038582700}{LED3\+\_\+\+NODE}}, gpios)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main application file. 
+
+\begin{DoxyAuthor}{Author}
+\+: Francisco Heleno \href{mailto:francisco.c.heleno@ua.pt}{\texttt{ francisco.\+c.\+heleno@ua.\+pt}} and Hugo Carola \href{mailto:hugocarola@ua.pt}{\texttt{ hugocarola@ua.\+pt}} based on sample code given by Prof. Paulo Pedreiras
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1, June, 2024 
+\end{DoxyDate}
+This file contains the main application code. It initializes the database, configures the output pins for LEDs, sets up UART, configures buttons, and initializes threads.
+
+The main function resets the database values, configures the GPIO pins for the LEDs, initializes UART communication, configures button inputs, and sets up the necessary threads for the application. The outputs\+\_\+config function ensures the GPIO pins for the LEDs are ready and configures them to be in an output state. 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{main_8c_a661852bec8ab9683d43ad02881c2f2b5}\index{main.c@{main.c}!LED0\_NODE@{LED0\_NODE}}
+\index{LED0\_NODE@{LED0\_NODE}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LED0\_NODE}{LED0\_NODE}}
+{\footnotesize\ttfamily \label{main_8c_a661852bec8ab9683d43ad02881c2f2b5} 
+\#define LED0\+\_\+\+NODE~DT\+\_\+\+ALIAS(led0)}
+
+\Hypertarget{main_8c_ac8b7bbb65d5065e43a35775d9fc3e322}\index{main.c@{main.c}!LED1\_NODE@{LED1\_NODE}}
+\index{LED1\_NODE@{LED1\_NODE}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LED1\_NODE}{LED1\_NODE}}
+{\footnotesize\ttfamily \label{main_8c_ac8b7bbb65d5065e43a35775d9fc3e322} 
+\#define LED1\+\_\+\+NODE~DT\+\_\+\+ALIAS(led1)}
+
+\Hypertarget{main_8c_a9014b2cb02041c926b50b6411232ee82}\index{main.c@{main.c}!LED2\_NODE@{LED2\_NODE}}
+\index{LED2\_NODE@{LED2\_NODE}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LED2\_NODE}{LED2\_NODE}}
+{\footnotesize\ttfamily \label{main_8c_a9014b2cb02041c926b50b6411232ee82} 
+\#define LED2\+\_\+\+NODE~DT\+\_\+\+ALIAS(led2)}
+
+\Hypertarget{main_8c_ad5246f73682d98292ef7d7b038582700}\index{main.c@{main.c}!LED3\_NODE@{LED3\_NODE}}
+\index{LED3\_NODE@{LED3\_NODE}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LED3\_NODE}{LED3\_NODE}}
+{\footnotesize\ttfamily \label{main_8c_ad5246f73682d98292ef7d7b038582700} 
+\#define LED3\+\_\+\+NODE~DT\+\_\+\+ALIAS(led3)}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{main_8c_a840291bc02cba5474a4cb46a9b9566fe} 
+int main (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initialize threads, pins, and UART. 
+
+This is the main entry point for the program. It resets the database variables, configures the outputs, initializes the UART, configures the buttons, and sets up the threads.
+
+\begin{DoxyReturn}{Returns}
+Always returns 0. 
+\end{DoxyReturn}
+\Hypertarget{main_8c_af7447a20748b0bb185d287bdd6c63b00}\index{main.c@{main.c}!outputs\_config@{outputs\_config}}
+\index{outputs\_config@{outputs\_config}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{outputs\_config()}{outputs\_config()}}
+{\footnotesize\ttfamily \label{main_8c_af7447a20748b0bb185d287bdd6c63b00} 
+void outputs\+\_\+config (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Configures the output for the LEDs. 
+
+This function initializes and configures the GPIO pins for the LEDs. It sets the GPIO pins to be in an output state and ensures the LEDs are initially turned off. 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8c_ab75a9cab83ec0f1c6cb497b2fcba61d9}\index{main.c@{main.c}!DB@{DB}}
+\index{DB@{DB}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{DB}{DB}}
+{\footnotesize\ttfamily \label{main_8c_ab75a9cab83ec0f1c6cb497b2fcba61d9} 
+struct \mbox{\hyperlink{struct_d_a_t_a_b_a_s_e}{DATABASE}} DB}
+
+Global database instance \Hypertarget{main_8c_a50fe4b13bf2afc7318af54e654db9145}\index{main.c@{main.c}!led0\_dev@{led0\_dev}}
+\index{led0\_dev@{led0\_dev}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{led0\_dev}{led0\_dev}}
+{\footnotesize\ttfamily \label{main_8c_a50fe4b13bf2afc7318af54e654db9145} 
+struct gpio\+\_\+dt\+\_\+spec led0\+\_\+dev = GPIO\+\_\+\+DT\+\_\+\+SPEC\+\_\+\+GET(\mbox{\hyperlink{main_8c_a661852bec8ab9683d43ad02881c2f2b5}{LED0\+\_\+\+NODE}}, gpios)}
+
+GPIO specification for LED 0 \Hypertarget{main_8c_a1cb6257d3404a21567727de766108246}\index{main.c@{main.c}!led1\_dev@{led1\_dev}}
+\index{led1\_dev@{led1\_dev}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{led1\_dev}{led1\_dev}}
+{\footnotesize\ttfamily \label{main_8c_a1cb6257d3404a21567727de766108246} 
+struct gpio\+\_\+dt\+\_\+spec led1\+\_\+dev = GPIO\+\_\+\+DT\+\_\+\+SPEC\+\_\+\+GET(\mbox{\hyperlink{main_8c_ac8b7bbb65d5065e43a35775d9fc3e322}{LED1\+\_\+\+NODE}}, gpios)}
+
+GPIO specification for LED 1 \Hypertarget{main_8c_acd3ce5d68b360629114bfef1450b8a5d}\index{main.c@{main.c}!led2\_dev@{led2\_dev}}
+\index{led2\_dev@{led2\_dev}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{led2\_dev}{led2\_dev}}
+{\footnotesize\ttfamily \label{main_8c_acd3ce5d68b360629114bfef1450b8a5d} 
+struct gpio\+\_\+dt\+\_\+spec led2\+\_\+dev = GPIO\+\_\+\+DT\+\_\+\+SPEC\+\_\+\+GET(\mbox{\hyperlink{main_8c_a9014b2cb02041c926b50b6411232ee82}{LED2\+\_\+\+NODE}}, gpios)}
+
+GPIO specification for LED 2 \Hypertarget{main_8c_a37cb9fa582678f5d3381405d90135296}\index{main.c@{main.c}!led3\_dev@{led3\_dev}}
+\index{led3\_dev@{led3\_dev}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{led3\_dev}{led3\_dev}}
+{\footnotesize\ttfamily \label{main_8c_a37cb9fa582678f5d3381405d90135296} 
+struct gpio\+\_\+dt\+\_\+spec led3\+\_\+dev = GPIO\+\_\+\+DT\+\_\+\+SPEC\+\_\+\+GET(\mbox{\hyperlink{main_8c_ad5246f73682d98292ef7d7b038582700}{LED3\+\_\+\+NODE}}, gpios)}
+
+GPIO specification for LED 3 

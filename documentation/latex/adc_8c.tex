@@ -1,0 +1,38 @@
+\doxysection{src/adc/adc.c File Reference}
+\hypertarget{adc_8c}{}\label{adc_8c}\index{src/adc/adc.c@{src/adc/adc.c}}
+
+
+Implementation of ADC module that reads an ADC input and prints the corresponding raw and voltage value in the console.  
+
+
+{\ttfamily \#include "{}adc.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{adc_8c_a4e0a5af5c64c95b8c2d9f98f5eaa3cda}{adc\+\_\+sample}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes ADC configuration and starts sampling. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of ADC module that reads an ADC input and prints the corresponding raw and voltage value in the console. 
+
+\begin{DoxyAuthor}{Author}
+Francisco Heleno \href{mailto:francisco.c.heleno@ua.pt}{\texttt{ francisco.\+c.\+heleno@ua.\+pt}} and Hugo Carola \href{mailto:hugocarola@ua.pt}{\texttt{ hugocarola@ua.\+pt}} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1, June, 2024 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{adc_8c_a4e0a5af5c64c95b8c2d9f98f5eaa3cda}\index{adc.c@{adc.c}!adc\_sample@{adc\_sample}}
+\index{adc\_sample@{adc\_sample}!adc.c@{adc.c}}
+\doxysubsubsection{\texorpdfstring{adc\_sample()}{adc\_sample()}}
+{\footnotesize\ttfamily \label{adc_8c_a4e0a5af5c64c95b8c2d9f98f5eaa3cda} 
+int adc\+\_\+sample (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes ADC configuration and starts sampling. 
+
+Takes one sample from the ADC. Returns 0 if successful, negative value if there\textquotesingle{}s an error. 

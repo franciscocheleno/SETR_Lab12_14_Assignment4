@@ -1,0 +1,42 @@
+\doxysection{adc.\+h}
+\hypertarget{adc_8h_source}{}\label{adc_8h_source}\index{src/adc/adc.h@{src/adc/adc.h}}
+\mbox{\hyperlink{adc_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ ADC\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ ADC\_H}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <zephyr/kernel.h>}\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ for\ k\_msleep()\ */}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <zephyr/device.h>}\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ for\ device\_is\_ready()\ and\ device\ structure\ */}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <zephyr/devicetree.h>}\ \ \ \ \ \ \textcolor{comment}{/*\ for\ DT\_NODELABEL()\ */}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <zephyr/drivers/gpio.h>}\ \ \ \ \textcolor{comment}{/*\ for\ GPIO\ API*/}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <zephyr/drivers/adc.h>}\ \ \ \ \ \textcolor{comment}{/*\ for\ ADC\ API*/}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <zephyr/sys/printk.h>}\ \ \ \ \ \ \textcolor{comment}{/*\ for\ printk()*/}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <hal/nrf\_saadc.h>}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ ADC\ definitions\ and\ includes\ */}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ ADC\_RESOLUTION\ 10\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ ADC\ resolution\ in\ bits\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ ADC\_GAIN\ ADC\_GAIN\_1\_4\ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ ADC\ gain\ setting\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ ADC\_REFERENCE\ ADC\_REF\_VDD\_1\_4\ \ \ }\textcolor{comment}{/*\ ADC\ reference\ voltage\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ ADC\_ACQUISITION\_TIME\ ADC\_ACQ\_TIME(ADC\_ACQ\_TIME\_MICROSECONDS,\ 40)\ }}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ ADC\_CHANNEL\_ID\ 1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ ADC\ channel\ ID\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ ADC\_CHANNEL\_INPUT\ NRF\_SAADC\_INPUT\_AIN1\ }\textcolor{comment}{/*nRF\ ANx\ input\ to\ use*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ BUFFER\_SIZE\ 1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Buffer\ size\ for\ ADC\ samples\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ ADC\_NODE\ DT\_NODELABEL(adc)\ \ \ \ \ \ }\textcolor{comment}{/*\ Device\ tree\ node\ label\ for\ ADC\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{comment}{/*\ Error\ codes\ */}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ ERR\_OK\ 0\ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ All\ fine\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ ERR\_CONFIG\ -\/1\ \ \ }\textcolor{comment}{/*\ Configuration\ failure\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{comment}{/*\ Global\ vars\ */}}
+\DoxyCodeLine{00038\ \textcolor{keyword}{static}\ uint16\_t\ adc\_sample\_buffer[\mbox{\hyperlink{adc_8h_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\_SIZE}}];}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{adc_8h_a4e0a5af5c64c95b8c2d9f98f5eaa3cda}{adc\_sample}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ ADC\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

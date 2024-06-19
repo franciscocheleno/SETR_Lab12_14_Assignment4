@@ -1,0 +1,67 @@
+\doxysection{threads.\+h}
+\hypertarget{threads_8h_source}{}\label{threads_8h_source}\index{src/threads/threads.h@{src/threads/threads.h}}
+\mbox{\hyperlink{threads_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <zephyr/kernel.h>}\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ for\ kernel\ functions*/}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <zephyr/device.h>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <zephyr/devicetree.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <zephyr/drivers/gpio.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <zephyr/sys/printk.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <zephyr/timing/timing.h>}\ \ \ \textcolor{comment}{/*\ for\ timing\ services\ */}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#ifndef\ threads\_H}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ threads\_H}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_d_a_t_a_b_a_s_e}{DATABASE}}}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ int8\_t\ \mbox{\hyperlink{struct_d_a_t_a_b_a_s_e_a8d6f45553bbcc17ff9f86ef61d7e0aff}{BUTTON1}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ int8\_t\ \mbox{\hyperlink{struct_d_a_t_a_b_a_s_e_acf9e48e3958da672b23c4be261254d95}{BUTTON2}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ int8\_t\ \mbox{\hyperlink{struct_d_a_t_a_b_a_s_e_aa2ca88f664044014c8fe2db79872fd64}{BUTTON3}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00032\ \ \ \ \ int8\_t\ \mbox{\hyperlink{struct_d_a_t_a_b_a_s_e_a62d026ef60ef78cc87b80b53979d9a1c}{BUTTON4}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ int8\_t\ \mbox{\hyperlink{struct_d_a_t_a_b_a_s_e_a2ac485fdd63eb8e696865e1c473f119a}{OUTPUT1}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ int8\_t\ \mbox{\hyperlink{struct_d_a_t_a_b_a_s_e_aab424951d925bf741f4547ed34512cc5}{OUTPUT2}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ int8\_t\ \mbox{\hyperlink{struct_d_a_t_a_b_a_s_e_a1bc5d5c3948ddbd6bc8e553092759acd}{OUTPUT3}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ int8\_t\ \mbox{\hyperlink{struct_d_a_t_a_b_a_s_e_af2f079e5319e06c929f9b8928fb4cbc6}{OUTPUT4}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ int8\_t\ \mbox{\hyperlink{struct_d_a_t_a_b_a_s_e_ac8c9944f1dd5d450133907d4382eddbe}{Pot\_Voltage}};\ \ \ }
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_d_a_t_a_b_a_s_e}{DATABASE}}\ \mbox{\hyperlink{threads_8h_ab75a9cab83ec0f1c6cb497b2fcba61d9}{DB}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }k\_sem\ \mbox{\hyperlink{threads_8h_aa3be317cc13a026ab4ac872eb3e80797}{sem\_adc}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }k\_sem\ \mbox{\hyperlink{threads_8h_a15c51aa99cefeae3b5ca2eef2e8b273e}{sem\_inputs}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }k\_sem\ \mbox{\hyperlink{threads_8h_a6bd3d8cbfb7ff3a37e966c2eb4a0871f}{sem\_outputs}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }k\_sem\ \mbox{\hyperlink{threads_8h_a8024df73a5c90d77ce19e16f685369a7}{sem\_Led\_1\_update}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }k\_sem\ \mbox{\hyperlink{threads_8h_a80c412b295dd8c5d659d2bdfc392805f}{sem\_Led\_2\_update}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }k\_sem\ \mbox{\hyperlink{threads_8h_ac16cd502b6de040a60a436757fccbec5}{sem\_Led\_3\_update}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }k\_sem\ \mbox{\hyperlink{threads_8h_a2e4aff8afaeb91f59d9e0b10bfabddc2}{sem\_Led\_4\_update}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }gpio\_dt\_spec\ \mbox{\hyperlink{threads_8h_a50fe4b13bf2afc7318af54e654db9145}{led0\_dev}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }gpio\_dt\_spec\ \mbox{\hyperlink{threads_8h_a1cb6257d3404a21567727de766108246}{led1\_dev}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }gpio\_dt\_spec\ \mbox{\hyperlink{threads_8h_acd3ce5d68b360629114bfef1450b8a5d}{led2\_dev}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{extern}\ \textcolor{keyword}{struct\ }gpio\_dt\_spec\ \mbox{\hyperlink{threads_8h_a37cb9fa582678f5d3381405d90135296}{led3\_dev}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{threads_8h_a8a3450063452447884cf5e6b78f8e5c6}{thread\_UART\_period}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{threads_8h_a3c6b0793098f4f6ebd26fb3fe75af932}{thread\_INPUTS\_period}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{threads_8h_a3659f0dd8e7433408e97bccde7438707}{thread\_OUTPUTS\_period}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{threads_8h_a31459880813e829a60a235144bb05c37}{thread\_ADC\_period}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00064\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{threads_8h_a271629210ef1b774c4077ff29b5b225e}{configure\_threads}}();}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{threads_8h_aa9a59ca521c5ff6f8851445510fdd32b}{thread\_UART\_code}}(\textcolor{keywordtype}{void}\ *argA,\ \textcolor{keywordtype}{void}\ *argB,\ \textcolor{keywordtype}{void}\ *argC);\ }
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{threads_8h_a08060d1f15c17525739da4857f2397ad}{thread\_INPUTS\_code}}();}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{threads_8h_a9342bcc6abc4be6264d3db916938877d}{thread\_OUTPUTS\_code}}();}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{threads_8h_a6c448c6d7365f50fcc4989e2bc0982cc}{thread\_ADC\_read}}();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00103\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{threads_8h_a066cc688d109b36df09f1c6a6dffb646}{thread\_Led\_1\_code}}();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00110\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{threads_8h_a902ae28c05fbe26bef85f33b1da16ab7}{thread\_Led\_2\_code}}();}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00117\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{threads_8h_ae1b736cd61a9a4b5103ab5d6f1421f5a}{thread\_Led\_3\_code}}();}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00124\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{threads_8h_a9c8fe420e134e3d7996be748d8b7715d}{thread\_Led\_4\_code}}();}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ threads\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,134 @@
+\doxysection{src/adc/adc.h File Reference}
+\hypertarget{adc_8h}{}\label{adc_8h}\index{src/adc/adc.h@{src/adc/adc.h}}
+
+
+Implementation of ADC module that reads an ADC input and prints the corresponding raw and voltage value in the console.  
+
+
+{\ttfamily \#include $<$zephyr/kernel.\+h$>$}\newline
+{\ttfamily \#include $<$zephyr/device.\+h$>$}\newline
+{\ttfamily \#include $<$zephyr/devicetree.\+h$>$}\newline
+{\ttfamily \#include $<$zephyr/drivers/gpio.\+h$>$}\newline
+{\ttfamily \#include $<$zephyr/drivers/adc.\+h$>$}\newline
+{\ttfamily \#include $<$zephyr/sys/printk.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$hal/nrf\+\_\+saadc.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{adc_8h_a00978ca9e8220475258dcbbbb7d29129}{ADC\+\_\+\+RESOLUTION}}~10               /\texorpdfstring{$\ast$}{*} ADC resolution in bits \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{adc_8h_a2bbc7e1578f01928d36ef7fa94ac4905}{ADC\+\_\+\+GAIN}}~ADC\+\_\+\+GAIN\+\_\+1\+\_\+4           /\texorpdfstring{$\ast$}{*} ADC gain setting \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{adc_8h_a317868c528ebe27fbca094a8bc2d910c}{ADC\+\_\+\+REFERENCE}}~ADC\+\_\+\+REF\+\_\+\+VDD\+\_\+1\+\_\+4   /\texorpdfstring{$\ast$}{*} ADC reference voltage \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{adc_8h_aeb8de5967ac4465f35317d818eeb129b}{ADC\+\_\+\+ACQUISITION\+\_\+\+TIME}}~ADC\+\_\+\+ACQ\+\_\+\+TIME(ADC\+\_\+\+ACQ\+\_\+\+TIME\+\_\+\+MICROSECONDS, 40)
+\item 
+\#define \mbox{\hyperlink{adc_8h_a8bfca74ee546715af6682194ea92286a}{ADC\+\_\+\+CHANNEL\+\_\+\+ID}}~1                /\texorpdfstring{$\ast$}{*} ADC channel ID \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{adc_8h_a5508ef7e762284248c2e87e16865522e}{ADC\+\_\+\+CHANNEL\+\_\+\+INPUT}}~NRF\+\_\+\+SAADC\+\_\+\+INPUT\+\_\+\+AIN1 /\texorpdfstring{$\ast$}{*}n\+RF ANx input to use\texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{adc_8h_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\+\_\+\+SIZE}}~1                   /\texorpdfstring{$\ast$}{*} Buffer size for ADC samples \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{adc_8h_ad18e73e408fd9f8cd35a2312d590351f}{ADC\+\_\+\+NODE}}~DT\+\_\+\+NODELABEL(adc)      /\texorpdfstring{$\ast$}{*} Device tree node label for ADC \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{adc_8h_a98c763adfeea8e9831c46ec269e47ae9}{ERR\+\_\+\+OK}}~0        /\texorpdfstring{$\ast$}{*} All fine \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{adc_8h_ab0cb821460f09a412a6cda71b96c958a}{ERR\+\_\+\+CONFIG}}~-\/1   /\texorpdfstring{$\ast$}{*} Configuration failure \texorpdfstring{$\ast$}{*}/
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{adc_8h_a4e0a5af5c64c95b8c2d9f98f5eaa3cda}{adc\+\_\+sample}} (void)
+\begin{DoxyCompactList}\small\item\em Initializes ADC configuration and starts sampling. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of ADC module that reads an ADC input and prints the corresponding raw and voltage value in the console. 
+
+\begin{DoxyAuthor}{Author}
+Francisco Heleno \href{mailto:francisco.c.heleno@ua.pt}{\texttt{ francisco.\+c.\+heleno@ua.\+pt}} and Hugo Carola \href{mailto:hugocarola@ua.pt}{\texttt{ hugocarola@ua.\+pt}} 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+1, June, 2024 
+\end{DoxyDate}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{adc_8h_aeb8de5967ac4465f35317d818eeb129b}\index{adc.h@{adc.h}!ADC\_ACQUISITION\_TIME@{ADC\_ACQUISITION\_TIME}}
+\index{ADC\_ACQUISITION\_TIME@{ADC\_ACQUISITION\_TIME}!adc.h@{adc.h}}
+\doxysubsubsection{\texorpdfstring{ADC\_ACQUISITION\_TIME}{ADC\_ACQUISITION\_TIME}}
+{\footnotesize\ttfamily \label{adc_8h_aeb8de5967ac4465f35317d818eeb129b} 
+\#define ADC\+\_\+\+ACQUISITION\+\_\+\+TIME~ADC\+\_\+\+ACQ\+\_\+\+TIME(ADC\+\_\+\+ACQ\+\_\+\+TIME\+\_\+\+MICROSECONDS, 40)}
+
+ADC acquisition time \Hypertarget{adc_8h_a8bfca74ee546715af6682194ea92286a}\index{adc.h@{adc.h}!ADC\_CHANNEL\_ID@{ADC\_CHANNEL\_ID}}
+\index{ADC\_CHANNEL\_ID@{ADC\_CHANNEL\_ID}!adc.h@{adc.h}}
+\doxysubsubsection{\texorpdfstring{ADC\_CHANNEL\_ID}{ADC\_CHANNEL\_ID}}
+{\footnotesize\ttfamily \label{adc_8h_a8bfca74ee546715af6682194ea92286a} 
+\#define ADC\+\_\+\+CHANNEL\+\_\+\+ID~1                /\texorpdfstring{$\ast$}{*} ADC channel ID \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{adc_8h_a5508ef7e762284248c2e87e16865522e}\index{adc.h@{adc.h}!ADC\_CHANNEL\_INPUT@{ADC\_CHANNEL\_INPUT}}
+\index{ADC\_CHANNEL\_INPUT@{ADC\_CHANNEL\_INPUT}!adc.h@{adc.h}}
+\doxysubsubsection{\texorpdfstring{ADC\_CHANNEL\_INPUT}{ADC\_CHANNEL\_INPUT}}
+{\footnotesize\ttfamily \label{adc_8h_a5508ef7e762284248c2e87e16865522e} 
+\#define ADC\+\_\+\+CHANNEL\+\_\+\+INPUT~NRF\+\_\+\+SAADC\+\_\+\+INPUT\+\_\+\+AIN1 /\texorpdfstring{$\ast$}{*}n\+RF ANx input to use\texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{adc_8h_a2bbc7e1578f01928d36ef7fa94ac4905}\index{adc.h@{adc.h}!ADC\_GAIN@{ADC\_GAIN}}
+\index{ADC\_GAIN@{ADC\_GAIN}!adc.h@{adc.h}}
+\doxysubsubsection{\texorpdfstring{ADC\_GAIN}{ADC\_GAIN}}
+{\footnotesize\ttfamily \label{adc_8h_a2bbc7e1578f01928d36ef7fa94ac4905} 
+\#define ADC\+\_\+\+GAIN~ADC\+\_\+\+GAIN\+\_\+1\+\_\+4           /\texorpdfstring{$\ast$}{*} ADC gain setting \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{adc_8h_ad18e73e408fd9f8cd35a2312d590351f}\index{adc.h@{adc.h}!ADC\_NODE@{ADC\_NODE}}
+\index{ADC\_NODE@{ADC\_NODE}!adc.h@{adc.h}}
+\doxysubsubsection{\texorpdfstring{ADC\_NODE}{ADC\_NODE}}
+{\footnotesize\ttfamily \label{adc_8h_ad18e73e408fd9f8cd35a2312d590351f} 
+\#define ADC\+\_\+\+NODE~DT\+\_\+\+NODELABEL(adc)      /\texorpdfstring{$\ast$}{*} Device tree node label for ADC \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{adc_8h_a317868c528ebe27fbca094a8bc2d910c}\index{adc.h@{adc.h}!ADC\_REFERENCE@{ADC\_REFERENCE}}
+\index{ADC\_REFERENCE@{ADC\_REFERENCE}!adc.h@{adc.h}}
+\doxysubsubsection{\texorpdfstring{ADC\_REFERENCE}{ADC\_REFERENCE}}
+{\footnotesize\ttfamily \label{adc_8h_a317868c528ebe27fbca094a8bc2d910c} 
+\#define ADC\+\_\+\+REFERENCE~ADC\+\_\+\+REF\+\_\+\+VDD\+\_\+1\+\_\+4   /\texorpdfstring{$\ast$}{*} ADC reference voltage \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{adc_8h_a00978ca9e8220475258dcbbbb7d29129}\index{adc.h@{adc.h}!ADC\_RESOLUTION@{ADC\_RESOLUTION}}
+\index{ADC\_RESOLUTION@{ADC\_RESOLUTION}!adc.h@{adc.h}}
+\doxysubsubsection{\texorpdfstring{ADC\_RESOLUTION}{ADC\_RESOLUTION}}
+{\footnotesize\ttfamily \label{adc_8h_a00978ca9e8220475258dcbbbb7d29129} 
+\#define ADC\+\_\+\+RESOLUTION~10               /\texorpdfstring{$\ast$}{*} ADC resolution in bits \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{adc_8h_a6b20d41d6252e9871430c242cb1a56e7}\index{adc.h@{adc.h}!BUFFER\_SIZE@{BUFFER\_SIZE}}
+\index{BUFFER\_SIZE@{BUFFER\_SIZE}!adc.h@{adc.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE}{BUFFER\_SIZE}}
+{\footnotesize\ttfamily \label{adc_8h_a6b20d41d6252e9871430c242cb1a56e7} 
+\#define BUFFER\+\_\+\+SIZE~1                   /\texorpdfstring{$\ast$}{*} Buffer size for ADC samples \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{adc_8h_ab0cb821460f09a412a6cda71b96c958a}\index{adc.h@{adc.h}!ERR\_CONFIG@{ERR\_CONFIG}}
+\index{ERR\_CONFIG@{ERR\_CONFIG}!adc.h@{adc.h}}
+\doxysubsubsection{\texorpdfstring{ERR\_CONFIG}{ERR\_CONFIG}}
+{\footnotesize\ttfamily \label{adc_8h_ab0cb821460f09a412a6cda71b96c958a} 
+\#define ERR\+\_\+\+CONFIG~-\/1   /\texorpdfstring{$\ast$}{*} Configuration failure \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{adc_8h_a98c763adfeea8e9831c46ec269e47ae9}\index{adc.h@{adc.h}!ERR\_OK@{ERR\_OK}}
+\index{ERR\_OK@{ERR\_OK}!adc.h@{adc.h}}
+\doxysubsubsection{\texorpdfstring{ERR\_OK}{ERR\_OK}}
+{\footnotesize\ttfamily \label{adc_8h_a98c763adfeea8e9831c46ec269e47ae9} 
+\#define ERR\+\_\+\+OK~0        /\texorpdfstring{$\ast$}{*} All fine \texorpdfstring{$\ast$}{*}/}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{adc_8h_a4e0a5af5c64c95b8c2d9f98f5eaa3cda}\index{adc.h@{adc.h}!adc\_sample@{adc\_sample}}
+\index{adc\_sample@{adc\_sample}!adc.h@{adc.h}}
+\doxysubsubsection{\texorpdfstring{adc\_sample()}{adc\_sample()}}
+{\footnotesize\ttfamily \label{adc_8h_a4e0a5af5c64c95b8c2d9f98f5eaa3cda} 
+int adc\+\_\+sample (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+
+
+
+Initializes ADC configuration and starts sampling. 
+
+\begin{DoxyReturn}{Returns}
+ERR\+\_\+\+OK if successful, ERR\+\_\+\+CONFIG if configuration failed.
+\end{DoxyReturn}
+Takes one sample from the ADC. Returns 0 if successful, negative value if there\textquotesingle{}s an error. 

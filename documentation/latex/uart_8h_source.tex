@@ -1,0 +1,44 @@
+\doxysection{uart.\+h}
+\hypertarget{uart_8h_source}{}\label{uart_8h_source}\index{src/uart/uart.h@{src/uart/uart.h}}
+\mbox{\hyperlink{uart_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <zephyr/kernel.h>}\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ for\ k\_msleep()\ */}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <zephyr/device.h>}\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ for\ device\_is\_ready()\ and\ device\ structure\ */}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <zephyr/devicetree.h>}\ \ \ \ \ \ \textcolor{comment}{/*\ for\ DT\_NODELABEL()\ */}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <zephyr/drivers/uart.h>}\ \ \ \ \textcolor{comment}{/*\ for\ ADC\ API*/}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <zephyr/sys/printk.h>}\ \ \ \ \ \ \textcolor{comment}{/*\ for\ printk()*/}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <stdio.h>}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ for\ sprintf()\ */}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <ctype.h>}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#ifndef\ uart\_H}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ uart\_H}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ UART\_NODE\ DT\_NODELABEL(uart0)\ \ \ }\textcolor{comment}{/*\ UART0\ node\ ID*/}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ MAIN\_SLEEP\_TIME\_MS\ 1000\ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Time\ between\ main()\ activations\ */}\textcolor{preprocessor}{\ }}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ FATAL\_ERR\ -\/1\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Fatal\ error\ return\ code,\ app\ terminates\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ RXBUF\_SIZE\ 60\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ RX\ buffer\ size\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ TXBUF\_SIZE\ 60\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ TX\ buffer\ size\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ MSG\_BUF\_SIZE\ 100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Buffer\ for\ messages\ sent\ via\ UART\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ RX\_TIMEOUT\ 1000\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ Inactivity\ period\ after\ the\ instant\ when\ last\ char\ was\ received\ that\ triggers\ an\ rx\ event\ (in\ us)\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{extern}\ uint8\_t\ \mbox{\hyperlink{uart_8h_a7781516e906a759a091c3c59d219d980}{RX\_buf}}[\mbox{\hyperlink{uart_8h_a630686ccbe0cb17e592951055a5da582}{RXBUF\_SIZE}}];\ \ \ \ \ \ \textcolor{comment}{/*\ RX\ buffer,\ to\ store\ received\ data\ */}}
+\DoxyCodeLine{00039\ \textcolor{keyword}{extern}\ uint8\_t\ \mbox{\hyperlink{uart_8h_af306aae5267e49e874ae817ea6b81c31}{RX\_chars}}[\mbox{\hyperlink{uart_8h_a630686ccbe0cb17e592951055a5da582}{RXBUF\_SIZE}}];\ \ \ \ \textcolor{comment}{/*\ Chars\ actually\ received\ \ */}}
+\DoxyCodeLine{00040\ \textcolor{keyword}{extern}\ \textcolor{keyword}{volatile}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{uart_8h_aec36efedb516ed959b990235b3ccc2a8}{uart\_RXbuf\_nchar}};\ \ \ \textcolor{comment}{/*\ Number\ of\ chars\ currently\ on\ the\ rx\ buffer\ */}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{uart_8h_ad20d59c8a899f1314f93710419d0705b}{print\_UI}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{uart_8h_a5bfee77f43d287a477e32e10b3168430}{uart\_init}}();}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00072\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{uart_8h_a322bf2588d266226a6c485677f737ef3}{uart\_cb}}(\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ device\ *dev,\ \textcolor{keyword}{struct}\ uart\_event\ *evt,\ \textcolor{keywordtype}{void}\ *user\_data);}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{uart_8h_a30cd03039fc5d6965180efefcec9cb15}{read\_user\_inp}}(uint8\_t\ RX\_chars\_aux[\mbox{\hyperlink{uart_8h_a630686ccbe0cb17e592951055a5da582}{RXBUF\_SIZE}}]);\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Executed\ when\ "{}Enter"{}\ is\ pressed\ on\ keyboard}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ uart\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
